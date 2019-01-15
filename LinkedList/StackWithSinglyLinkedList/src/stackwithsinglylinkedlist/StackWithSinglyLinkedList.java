@@ -18,6 +18,27 @@ public class StackWithSinglyLinkedList {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        System.out.println("Printing Queue Values......");
+        
+        Queue<String> myQueue = new Queue<String>();
+        
+        myQueue.push("1");
+        myQueue.push("2");
+        myQueue.push("3");
+        myQueue.push("4");
+        myQueue.push("5");
+        
+        myQueue.pop();
+        
+        String value = myQueue.peek();
+        
+        System.out.println("Peek Value is = " + value);
+        
+        myQueue.display();
+        
+        
+        System.out.println("Printing Stack Values.....");
+        
         Stack<String> myStack = new Stack<String>();
         
         myStack.push("1");
@@ -28,7 +49,7 @@ public class StackWithSinglyLinkedList {
         
         myStack.pop();
         
-        String value = myStack.peek();
+        value = myStack.peek();
         
         System.out.println("Peek Value is = " + value);
         

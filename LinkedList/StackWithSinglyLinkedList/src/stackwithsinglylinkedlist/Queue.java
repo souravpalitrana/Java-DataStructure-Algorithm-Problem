@@ -10,12 +10,14 @@ import java.util.EmptyStackException;
 
 /**
  *
- * @author SouravPalit
+ * @author mac
  */
-public class Stack<E> {
-    
+public class Queue <E> {
+     // Here we need head to traverse the linked list from starting to lastNode
     private SinglyNode<E> head;
-    //Node count will track the length of the stack
+    //Last node will help us to add a new value at the last with out moving the 
+    private SinglyNode<E> lastNode;
+    //Node count will track the length of the Queue
     private int nodeCount = 0;
 
    
@@ -27,11 +29,11 @@ public class Stack<E> {
         if(head == null) {
             SinglyNode<E> node = new SinglyNode<>(null, value);
             head = node;
+            lastNode = node;
         } else {
-            SinglyNode<E> newNode = new SinglyNode<>(null, value);
-            SinglyNode<E> tempNode = head;
-            newNode.next = head;
-            head = newNode;
+            SinglyNode<E> node = new SinglyNode<>(null, value);
+            lastNode.next = node;
+            lastNode = lastNode.next;
         }
         nodeCount++;
     }
@@ -73,3 +75,4 @@ public class Stack<E> {
     }
     
 }
+
