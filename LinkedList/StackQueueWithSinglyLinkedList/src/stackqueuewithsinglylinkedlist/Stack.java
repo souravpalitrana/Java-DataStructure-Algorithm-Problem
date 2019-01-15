@@ -4,20 +4,18 @@
  * and open the template in the editor.
  */
 
-package stackwithsinglylinkedlist;
+package stackqueuewithsinglylinkedlist;
 
 import java.util.EmptyStackException;
 
 /**
  *
- * @author mac
+ * @author SouravPalit
  */
-public class Queue <E> {
-     // Here we need head to traverse the linked list from starting to lastNode
+public class Stack<E> {
+    
     private SinglyNode<E> head;
-    //Last node will help us to add a new value at the last with out moving the 
-    private SinglyNode<E> lastNode;
-    //Node count will track the length of the Queue
+    //Node count will track the length of the stack
     private int nodeCount = 0;
 
    
@@ -29,11 +27,11 @@ public class Queue <E> {
         if(head == null) {
             SinglyNode<E> node = new SinglyNode<>(null, value);
             head = node;
-            lastNode = node;
         } else {
-            SinglyNode<E> node = new SinglyNode<>(null, value);
-            lastNode.next = node;
-            lastNode = lastNode.next;
+            SinglyNode<E> newNode = new SinglyNode<>(null, value);
+            SinglyNode<E> tempNode = head;
+            newNode.next = head;
+            head = newNode;
         }
         nodeCount++;
     }
@@ -75,4 +73,3 @@ public class Queue <E> {
     }
     
 }
-
