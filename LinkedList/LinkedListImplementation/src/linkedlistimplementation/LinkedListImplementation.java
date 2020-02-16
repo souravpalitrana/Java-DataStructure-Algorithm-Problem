@@ -21,39 +21,61 @@ public class LinkedListImplementation {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       SinglyLinkedList<String> linkedList = new SinglyLinkedList<String>();
-       linkedList.add("1");
-       linkedList.add("2");
-       linkedList.add("3");
-       linkedList.add("4");
-       linkedList.add("5");
+       SinglyLinkedList<Integer> myLinkedList = new SinglyLinkedList<Integer>();  
+       myLinkedList.add(2);
+       myLinkedList.add(4);
+       myLinkedList.add(5);
+       myLinkedList.add(6);
        
-       String value = linkedList.get(2);
-       System.out.println("The value is = " + value);
+       myLinkedList.printList();  
        
-       linkedList.add(2,"6");
-       value = linkedList.get(2);
-       System.out.println("The value is = " + value);
+       myLinkedList.add(4, 1);
+       System.out.println("After Adding new value(1) at index 4");
+       myLinkedList.printList();
        
-       linkedList.add(0,"7");
-       value = linkedList.get(2);
-       System.out.println("The value is = " + value);
+       myLinkedList.add(5, 7);
+       System.out.println("After Adding new value(7) at index 5");
+       myLinkedList.printList();
        
-       linkedList.add(linkedList.size(), "8");
-       value = linkedList.get(linkedList.size());
-       System.out.println("The value is = " + value);
+       myLinkedList.add(2, 3);
+       System.out.println("After Adding new value(3) at index 2");
+       myLinkedList.printList();
        
-       linkedList.removeLast();
-       value = linkedList.get(linkedList.size());
-       System.out.println("The value is = " + value);
+       myLinkedList.remove(1);
+       System.out.println("After removing value(1)");
+       myLinkedList.printList();
        
-       linkedList.removeFirst();
-       value = linkedList.get(0);
-       System.out.println("The value is = " + value);
+       myLinkedList.remove(4);
+       System.out.println("After removing value(4)");
+       myLinkedList.printList();
        
-       linkedList.remove(2);
-       value = linkedList.get(2);
-       System.out.println("The value is = " + value);
+       myLinkedList.remove(7);
+       System.out.println("After removing value(7)");    
+       myLinkedList.printList();
+       
+       myLinkedList.add(9);
+       System.out.println("After adding value(9)");    
+       myLinkedList.printList();
+       
+       myLinkedList.removeAt(2);
+       System.out.println("After removing value at index 2");   
+       myLinkedList.printList();
+       
+       myLinkedList.removeAt(0);
+       System.out.println("After removing value from first");   
+       myLinkedList.printList();
+       
+       myLinkedList.removeAt(myLinkedList.size() -1);
+       System.out.println("After removing value from last");   
+       myLinkedList.printList();
+       
+       myLinkedList.removeAt(myLinkedList.size() -1);
+       System.out.println("After removing value from last");   
+       myLinkedList.printList();
+       
+       myLinkedList.removeAt(myLinkedList.size() -1);
+       System.out.println("After removing value from last");   
+       myLinkedList.printList();
        
     }
     

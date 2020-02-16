@@ -4,7 +4,7 @@ public class SinglyLinkedList<E> {
     // Here we need head to traverse the linked list from starting to lastNode
     private SinglyNode<E> head;
     //Last node will help us to add a new value at the last with out moving the 
-    private SinglyNode<E> lastNode;
+    private SinglyNode<E> tail;
     //Node count will track the length of the linked list
     private int nodeCount = 0;
 
@@ -17,15 +17,20 @@ public class SinglyLinkedList<E> {
         if(head == null) {
             SinglyNode<E> node = new SinglyNode<>(null, value);
             head = node;
-            lastNode = node;
+            tail = node;
         } else {
             SinglyNode<E> node = new SinglyNode<>(null, value);
-            lastNode.next = node;
-            lastNode = lastNode.next;
+            tail.next = node;
+            tail = tail.next;
         }
         nodeCount++;
     }
 
+    /**
+     * Add value in a specific position
+     * @param index
+     * @param value 
+     */
     public void add(int index, E value) {
         if(nodeCount == 0) {
             // Node count 0 means no node has been added yet.
@@ -34,34 +39,26 @@ public class SinglyLinkedList<E> {
             if(index == 0) {
                 // node count not zero and we want to add a new node at first.
                 addFirst(value);
-            } else if(index > nodeCount) {
+            } else if(index >= nodeCount) {
                 // if index is greater than node count we will add the node 
                 // at the last position. We are not throwing exception 
                 // when the index is greater than the linked list size
                 addLast(value);
             } else {
-                // For adding a new node we will go before the target node and
-                // will set this node's next to new node and set the index node
-                // to new node's next
+                // For adding a new node we will go before the target node (T-1) 
+                // and create a  new node which next node will be the last 
+                // iterated node next (T-1 node's next). 
                 SinglyNode<E> tempNode = head;
-                int counter = 1;
-                int LIMIT = index - 1;
-                while (counter <= LIMIT) {
-                    if(counter == LIMIT) {
-                        SinglyNode<E> nextNode = tempNode.next;
-                        SinglyNode<E> newNode = new SinglyNode<>(nextNode, value);
-                        tempNode.next = newNode;
-                    } else {
-                        tempNode = tempNode.next;
-                    }
-
-                    counter++;
-
+                
+                for (int i = 1; i < index; i++) {
+                    tempNode = tempNode.next;
                 }
+                
+                SinglyNode<E> newNode = new SinglyNode<E>(tempNode.next, value);
+                tempNode.next = newNode;
+                
                 nodeCount++;
             }
-
-
         }
     }
 
@@ -79,11 +76,15 @@ public class SinglyLinkedList<E> {
 
     public void addLast(E value) {
         SinglyNode<E> node = new SinglyNode<>(null, value);
-        lastNode.next = node;
-        lastNode = lastNode.next;
+        tail.next = node;
+        tail = tail.next;
         nodeCount++;
     }
 
+    /**
+     * Return the size of the linked list
+     * @return 
+     */
     public int size() {
         return nodeCount;
     }
@@ -93,69 +94,106 @@ public class SinglyLinkedList<E> {
         SinglyNode<E> tempNode = head;
         int counter = 1;
 
-        if(index == 0) {
-            return tempNode.getItem();
+        if (index == 0) {
+            return tempNode.getValue();
         } else {
             while (!tempNode.isLastNode()) {
                 counter++;
-                if(counter == index) {
+                if (counter == index) {
                     tempNode = tempNode.getNext();
                     break;
                 } else {
                     tempNode = tempNode.getNext();
                 }
             }
-            return tempNode.getItem();
+            return tempNode.getValue();
         }
     }
 
-    public void removeFirst() {
-        head = head.next;
-        nodeCount--;
-    }
-
-    public void removeLast() {
-        SinglyNode<E> tempNode = head;
-        int counter = 1;
-        while (counter < nodeCount) {
-            if(counter == nodeCount - 1) {
-                tempNode.next = null;
-                break;
-
-            } else {
-                tempNode = tempNode.next;
-            }
-            counter++;
-
-        }
-        nodeCount--;
-    }
-
-    public void remove(int index) {
-        if(nodeCount == 1 && index == 0) {
-            removeFirst();
-        } else if(nodeCount == index) {
-            removeLast();
+    /**
+     * Remove value from a specific position of the list
+     * @param index 
+     */
+    public void removeAt(int index) {
+        if (index < 0 || index >= nodeCount) return;
+        
+        if (nodeCount == 1) {
+            head = null;
+            tail = null;
+        } else if (index == 0) {
+            // That means we are deleting the first node. So need to change 
+            // the head position
+            head = head.next;
         } else {
             SinglyNode<E> tempNode = head;
-            int counter = 1;
-            while (counter < index) {
-                if(counter == index - 1) {
-                    SinglyNode<E> deleteNode = tempNode.next;
-
-                    tempNode.next = deleteNode.next;
-                    break;
-
-                } else {
-                    tempNode = tempNode.next;
-                }
-
-                counter++;
+            
+            for (int i = 1; i < index; i++) {
+                tempNode = tempNode.next;
             }
-            nodeCount--;
-
+            
+            tempNode.next = tempNode.next.next;
+            
+            if (tempNode.next == null) {
+                // That means we removed the last node. So need to change tail
+                // position
+                tail = tempNode;
+            }
+        }
+        nodeCount--; 
+    }
+    
+    /**
+     * Remove a node from the list
+     * @param item 
+     */
+    public void remove(E item) {
+        if (nodeCount == 0) return;
+        
+        SinglyNode<E> tempNode = head;
+        SinglyNode<E> prevNode = null;
+        
+        while (tempNode != null) {
+            if (tempNode.value == item) {
+                if (nodeCount == 1) {
+                    // Only one node present and we want to delete that. 
+                    head = null;
+                    tail = null;
+                } else if (prevNode == null) {
+                    // prevNode null means we found the node at the first node of 
+                    // the list. so we need to change the head position
+                    head = tempNode.next;
+                } else {
+                    // so our target node may present at the middle or at the end
+                    prevNode.next = tempNode.next;
+                    // Now if our target node is the last node in that case we need to
+                    // change the last node position as it is deleted
+                    if (prevNode.next == null) {
+                        tail = prevNode;
+                    }
+                }
+                nodeCount--;
+                break;
+            } else {
+               prevNode = tempNode;
+               tempNode = tempNode.next;
+           }
         }
     }
-
+    
+    /**
+     * Print existing linked list value
+     */
+     public void printList() {
+       if (nodeCount == 0) {
+           System.out.println("Empty Linked List");
+       } else {
+           SinglyNode<E> tempNode = head;
+           
+           while (tempNode != null) {
+               System.out.println(tempNode.value);
+               tempNode = tempNode.next;
+           }
+       }
+   }
 
 }

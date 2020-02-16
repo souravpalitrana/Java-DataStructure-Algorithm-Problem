@@ -1,16 +1,16 @@
 package linkedlistimplementation;
 
 public class SinglyNode<E> {
-    public E item;
+    public E value;
     public SinglyNode<E> next;
 
     public SinglyNode(SinglyNode<E> node, E value) {
         this.next = node;
-        this.item = value;
+        this.value = value;
     }
 
-    public E getItem() {
-        return item;
+    public E getValue() {
+        return value;
     }
 
     public SinglyNode<E> getNext() {
