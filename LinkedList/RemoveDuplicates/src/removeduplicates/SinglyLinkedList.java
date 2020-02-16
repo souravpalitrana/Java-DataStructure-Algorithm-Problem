@@ -183,6 +183,12 @@ public class SinglyLinkedList<E> {
         }
     }
     
+    /**
+     * The best way to remove duplicate from the linked list is using a map where
+     * you will insert the visited node and while iterating if you found a value 
+     * already exists in the map then you need to delete that. But here though
+     * time complexity is O(n) but space complexity is O(n)
+     */
     public void removeDuplicatesUsingBuffer() {
         HashSet<E> map = new HashSet<>();
         
@@ -204,6 +210,11 @@ public class SinglyLinkedList<E> {
                 
     }
     
+    /**
+     * If you could not use extra memory like map to check where a value is present
+     * then you need to use to loop like bubble sort. In that case time complexity
+     * will be O(n^2) but space complexity O(1)
+     */
     public void removeDuplicatesNotUsingBuffer() {
         SinglyNode<E> current = head;
         
