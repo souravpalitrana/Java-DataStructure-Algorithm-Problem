@@ -31,10 +31,10 @@ public class NQueen {
             }
         }
         
-        if (!solveNQueen(board, 0)) {
-            System.out.println("Solution doesn't exist");
-        } else {
+        if (solveNQueen(board, 0)) {
             printSolution(board);
+        } else {
+            System.out.println("Solution doesn't exist");
         }
     }
     
