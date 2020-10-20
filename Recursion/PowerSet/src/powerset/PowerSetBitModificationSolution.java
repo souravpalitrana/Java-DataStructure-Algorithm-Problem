@@ -32,46 +32,5 @@ public class PowerSetBitModificationSolution {
             }
             System.out.println("}");
         } 
-           
-        
-       /* ArrayList<ArrayList<String>> allSubsets = getSubsets(set, 0);
-        
-        for (ArrayList<String> subset : allSubsets) {
-            
-            if (subset.size() == 0) {
-                System.out.println("{}");
-            } else {
-                System.out.print("{");
-                for (String element : subset) {
-                    System.out.print(" " + element + " ");
-                }
-                System.out.println("}");
-            }
-            
-        }*/
     }
-    
-    private static ArrayList<ArrayList<String>> getSubsets(ArrayList<String> set, int index) {
-        ArrayList<ArrayList<String>> allSubsets;
-        
-        if (set.size() == index) {
-            allSubsets = new ArrayList<>();
-            allSubsets.add(new ArrayList<>());
-        } else {
-            allSubsets = getSubsets(set, index + 1);
-            String item = set.get(index);
-            ArrayList<ArrayList<String>> moreSubsets = new ArrayList<>();
-            
-            for (ArrayList<String> subset : allSubsets) {
-                ArrayList<String> newSubset = new ArrayList<>();
-                newSubset.addAll(subset);
-                newSubset.add(item);
-                moreSubsets.add(newSubset);
-            }
-            
-            allSubsets.addAll(moreSubsets);
-        }
-        
-        return allSubsets;
-    } 
 }

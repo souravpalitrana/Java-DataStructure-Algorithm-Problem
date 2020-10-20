@@ -37,7 +37,7 @@ public class PowerSet {
                 System.out.println("}");
             }
             
-        }
+        }  
     }
     
     private static ArrayList<ArrayList<String>> getSubsets(ArrayList<String> set, int index) {
