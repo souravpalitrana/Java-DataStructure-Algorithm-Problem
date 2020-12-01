@@ -9,24 +9,28 @@ package permutation;
  *
  * @author souravpalit
  */
-public class PermutationAlternate {
+public class PermutationWithDuplicateAlternate {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String input = "ABC";
+        String input = "AAB";
         
         calculate(input, 0, input.length());
     }
     
     public static void calculate(String input, int left, int right) {
-        if (left == right - 1) {
+        if (left == right) {
             System.out.println(input);
         } else {
             for (int i = left; i < right; i++) {
-                String swapped = swap(input, left, i);
-                calculate(swapped, left + 1, right);
+                if (i != 0 && input.charAt(i) == input.charAt(i -1)) {
+                    continue;
+                } else {
+                    String swapped = swap(input, left, i);
+                    calculate(swapped, left + 1, right);
+                }
             }
         }
     }
