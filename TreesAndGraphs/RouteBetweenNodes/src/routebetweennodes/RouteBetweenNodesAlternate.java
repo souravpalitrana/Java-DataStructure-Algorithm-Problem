@@ -7,13 +7,15 @@ package routebetweennodes;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import static routebetweennodes.NodeState.UNVISITED;
+import static routebetweennodes.NodeState.VISITED;
 
 /**
  * Route Between nodes: Given a directed graph, design an algorithm to find out
  * whether there is a route between nodes.
  * @author souravpalit
  */
-public class RouteBetweenNodes {
+public class RouteBetweenNodesAlternate {
 
     public static void main(String[] args) {
         Graph graph = createGraph();
@@ -26,6 +28,7 @@ public class RouteBetweenNodes {
         end = graph.getNodes()[4];
         System.out.println("Has route between " + start.getVertex() + " and " 
                 + end.getVertex() + " : " +hasRoute(graph, start, end));
+        
     }
     
     public static Graph createGraph() {
@@ -52,27 +55,20 @@ public class RouteBetweenNodes {
         return graph;
     }
     
-    // BFS
+    //DFS
     public static boolean hasRoute(Graph graph, Node start, Node end) {
-        Queue<Node> queue = new LinkedList<Node>();
-        start.setState(NodeState.VISITING);
-        queue.add(start);
-        Node current;
-        
-        while(!queue.isEmpty()) {
-            current = queue.poll();
-            if (current != null) {
-                current.setState(NodeState.VISITED);
-                for (Node node : current.getAdjacent()) {
-                    if (node.getState() == NodeState.UNVISITED) {
-                        if (node == end) {
-                            return true;
-                        } else {
-                            queue.add(node);
-                        }
-                    }
-                }
-            }
+        if (start == end) {
+            return true;
+        } else if (start.getState() == UNVISITED) {
+          start.setState(VISITED);
+          
+          for (Node node : start.getAdjacent()) {
+              if (node.getState() == UNVISITED) {
+                  if (hasRoute(graph, node, end)) {
+                      return true;
+                  }
+              }
+          }
         }
         
         return false;
