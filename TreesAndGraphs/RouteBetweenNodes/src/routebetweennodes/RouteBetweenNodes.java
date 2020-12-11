@@ -55,7 +55,7 @@ public class RouteBetweenNodes {
     // BFS
     public static boolean hasRoute(Graph graph, Node start, Node end) {
         Queue<Node> queue = new LinkedList<Node>();
-        start.setState(NodeState.VISITING);
+       // start.setState(NodeState.VISITING);
         queue.add(start);
         Node current;
         
@@ -65,7 +65,7 @@ public class RouteBetweenNodes {
                 current.setState(NodeState.VISITED);
                 for (Node node : current.getAdjacent()) {
                     if (node.getState() == NodeState.UNVISITED) {
-                        if (node == end) {
+                        if (node ==  end) {
                             return true;
                         } else {
                             queue.add(node);
