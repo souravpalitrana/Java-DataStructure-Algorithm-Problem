@@ -15,7 +15,8 @@ import apple.laf.JRSUIUtils.Tree;
  */
 public class MinimalTree {
 
-    /**
+    /** Given a sorted (increasing order) array with unique integer elements.Write
+     *  an algorithm to create a binary search tree with minimal height. 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
