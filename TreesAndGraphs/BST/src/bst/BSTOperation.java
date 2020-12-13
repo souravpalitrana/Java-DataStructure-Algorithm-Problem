@@ -29,15 +29,11 @@ public class BSTOperation {
        
         System.out.println("Root node is = " + bst.value);
         
-        //bst.remove3(10, null);
-        
         for (int i = values.length -1; i >=0; i--) {
            System.out.println("Contains (" + values[i] + ") : " + bst.contains(values[i]));
         }
         System.out.println("Root node is = " + bst.value);
         
-        
-        //System.out.println("Now Root node is = " + bst.getValue());
     }
     
     

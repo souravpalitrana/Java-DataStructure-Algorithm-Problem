@@ -59,7 +59,16 @@ public class BSTOperationTest {
         assertEquals(12, bst.value);
         bst.remove(12);
         assertEquals(false, bst.contains(12));
-        
+    }
+    
+    @Test 
+    public void testClosetValue() {
+        int [] values =  {5,502,204,55000,203,205,207,206,208,1001,4500, 5,2,15,1,3,5,22,-51,-403,1,1,1,1,57,60};
+        BST bst = new BST(100);
+        for (int i = 0; i < values.length; i++) {
+            bst.insert(values[i]);
+        }
+        assertEquals(208, bst.findClosestValueInBst(208));
     }
     
 }
