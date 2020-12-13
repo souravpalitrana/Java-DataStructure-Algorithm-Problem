@@ -66,7 +66,6 @@ public class BST {
 
     private void remove(int value, BST parentNode) {
         BST currentNode = this;
-
         // If value is not present in the BST then in one case currentNode will 
         // be null. In that case loop will stop.
         while (currentNode != null) {
@@ -137,7 +136,6 @@ public class BST {
 
     public int findClosestValueInBst(int target) {
         BST tree = this;
-        // Write your code here.
         int closeValue = tree.value;
 
         while (tree != null) {
@@ -160,10 +158,6 @@ public class BST {
             }
         }
         return closeValue;
-    }
-
-    private boolean isLeftClose(int left, int right, int target) {
-        return Math.abs(left - target) < Math.abs(right - target);
     }
 
     private int getMinValue() {
