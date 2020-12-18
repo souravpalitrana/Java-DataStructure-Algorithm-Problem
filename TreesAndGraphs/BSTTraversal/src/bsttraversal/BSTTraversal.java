@@ -6,10 +6,13 @@
 package bsttraversal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
- *
+ * Preorder Inorder PostOrder
+ * Time Complexity O(n) 
+ * Space Complexity: Average.: O(d) Worst: O(n) // Ignoring array storing
  * @author souravpalit
  */
 public class BSTTraversal {
@@ -18,9 +21,10 @@ public class BSTTraversal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int[] values = {5, 15, 2, 5, 22, 1, 12};
+        //int[] values = {5, 15, 2, 5, 22, 1, 12};
+        int [] values = { 2, -1, 100, 45, 12, 8, -1, 8, 10, 15, 8, 12, 94, 81, 2, -34};
 
-        BST bst = new BST(10);
+        BST bst = new BST(5);
 
         for (int i = 0; i < values.length; i++) {
             bst.insert(values[i]);
@@ -74,5 +78,4 @@ public class BSTTraversal {
         
         return array;
     }
-
 }
