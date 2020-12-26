@@ -92,32 +92,32 @@ public class FlattenBinaryTree {
     } 
     
     public static BinaryTree [] getLeftAndRightMostValues(BinaryTree root) {
-        BinaryTree leftTreeMostRightNode = null;
-        BinaryTree rightTreeMostLeftNode = null;
+        BinaryTree leftMost = null;
+        BinaryTree rightMost = null;
         
         if (root.left == null) {
-            leftTreeMostRightNode = root;
+            leftMost = root;
         }
         
         if (root.right == null) {
-            rightTreeMostLeftNode = root;
+            rightMost = root;
         }
         
         if (root.left != null) {
             BinaryTree [] mostValues = getLeftAndRightMostValues(root.left);
             root.left = mostValues[1];
             mostValues[1].right = root;
-            leftTreeMostRightNode = mostValues[0];
+            leftMost = mostValues[0];
         }
         
         if (root.right != null) {
             BinaryTree [] mostValues = getLeftAndRightMostValues(root.right);
             root.right = mostValues[0];
             mostValues[0].left = root;
-            rightTreeMostLeftNode = mostValues[1];
+            rightMost = mostValues[1];
         }
         
-        return new BinaryTree[] {leftTreeMostRightNode, rightTreeMostLeftNode};
+        return new BinaryTree[] {leftMost, rightMost};
     }
     
 }
