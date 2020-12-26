@@ -9,7 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Flatten Binary Tree: Write a function that takes in a Binary Tree, flattens it 
+ * and returns its leftmost node. A flattened binary tree is structure that's 
+ * nearly identical to a Doubly Linked List(except that nodes have left and right
+ * pointers instead of prev and next pointers), where nodes follow the orginal 
+ * tree's left to right order.
+ * 
+ * The flattening should be done in place, meaning that the orginal data structure
+ * should be mutated(no new structure should be created)
  * @author souravpalit
  */
 public class FlattenBinaryTree {
@@ -30,6 +37,7 @@ public class FlattenBinaryTree {
         
         binaryTree.right = new BinaryTree(3);
         binaryTree.right.left = new BinaryTree(6);
+        binaryTree.right.right= new BinaryTree(9);
         
         BinaryTree root = flattenBinaryTree(binaryTree);
         
@@ -46,11 +54,13 @@ public class FlattenBinaryTree {
         
         binaryTree2.right = new BinaryTree(3);
         binaryTree2.right.left = new BinaryTree(6);
+        binaryTree2.right.right= new BinaryTree(9);
         
         BinaryTree anotherRoot = fllattenBinaryTreeOptimiized(binaryTree2);
         System.out.println();
     }
     
+    // Time Complexity: O(N) and Space Complexity: O(N)
     public static BinaryTree flattenBinaryTree(BinaryTree root) {
     
         List<BinaryTree> inOrderList = new ArrayList<BinaryTree>();
@@ -75,6 +85,7 @@ public class FlattenBinaryTree {
         }
     }
     
+    // Time complexity: O(N) Splace Complexity: O(D) where D is depth of BT
     public static BinaryTree fllattenBinaryTreeOptimiized(BinaryTree root) {
         BinaryTree [] nodes = getLeftAndRightMostValues(root);
         return nodes[0];
