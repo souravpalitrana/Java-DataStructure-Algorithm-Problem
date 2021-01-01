@@ -8,7 +8,8 @@ package nodedepth;
 import java.util.Stack;
 
 /**
- *
+ * Node Depth: The distance between a node and the tree's root node is called the
+ * depth. So write a function that takes a binary tree and returns it's node depth.
  * @author souravpalit
  */
 public class NodeDepth {
@@ -54,6 +55,7 @@ public class NodeDepth {
     }
     
     
+    // Iterative Solution. Time Complexity: O(n), Space Complexity: O(h)
     public static int getDepthUsingIterativeSolution(BinaryTree root) {
         Stack<NodeInfo> stack = new Stack<NodeInfo>();
         stack.add(new NodeInfo(root, 0));
@@ -62,9 +64,7 @@ public class NodeDepth {
         
         while (!stack.isEmpty()) {
             NodeInfo nodeInfo = stack.pop();
-            if (nodeInfo.node == null) {
-                continue;
-            } else {
+            if (nodeInfo.node != null) {
                 sumOfNodeDepth += nodeInfo.depth;
                 stack.add(new NodeInfo(nodeInfo.node.left, nodeInfo.depth + 1));
                 stack.add(new NodeInfo(nodeInfo.node.right, nodeInfo.depth + 1));
