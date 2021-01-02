@@ -6,7 +6,8 @@
 package allnodedepth;
 
 /**
- *
+ * Time Complexity O(n) Space Complexity O(h)
+ * Using (n * (n + 1)) / 2 formula to remove adding n number using depthSum
  * @author souravpalit
  */
 public class AllNodeDepthFourthOptimize {
@@ -40,7 +41,6 @@ public class AllNodeDepthFourthOptimize {
         }
         
         int depthSum = (depth * (depth + 1)) / 2;
-        System.out.println("Node: " + node.value + " Depth = " + depth + " Before DepthSum: " + depthSum);
         
         int leftNodeSum = getAllNodeDepthSum(node.left, depth + 1);
         int rightNodeSum = getAllNodeDepthSum(node.right, depth + 1);

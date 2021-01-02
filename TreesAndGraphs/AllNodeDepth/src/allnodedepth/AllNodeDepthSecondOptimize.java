@@ -6,7 +6,7 @@
 package allnodedepth;
 
 /**
- *
+ * Time Complexity O(n) Space Complexity O(h)
  * @author souravpalit
  */
 public class AllNodeDepthSecondOptimize {

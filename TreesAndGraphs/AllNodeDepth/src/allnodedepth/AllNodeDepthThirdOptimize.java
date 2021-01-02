@@ -6,7 +6,7 @@
 package allnodedepth;
 
 /**
- *
+ * Time Complexity O(n) Space Complexity O(h)
  * @author souravpalit
  */
 public class AllNodeDepthThirdOptimize {
@@ -40,7 +40,6 @@ public class AllNodeDepthThirdOptimize {
         }
         
         depthSum += depth;
-        System.out.println("Node: " + node.value + " Depth = " + depth + " Before DepthSum: " + depthSum);
         
         int leftNodeSum = getAllNodeDepthSum(node.left, depthSum, depth + 1);
         int rightNodeSum = getAllNodeDepthSum(node.right, depthSum, depth + 1);
