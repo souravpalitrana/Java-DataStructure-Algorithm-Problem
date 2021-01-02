@@ -41,12 +41,12 @@ public class BinaryTreeDiameter {
     public static NodeInfo getDiameterHelper(BinaryTree node) {
         if (node == null) return new NodeInfo(0,0);
         
-        NodeInfo leftNodeCounts =  getDiameterHelper(node.left);
-        NodeInfo rightNodeCounts = getDiameterHelper(node.right);
+        NodeInfo leftNodeInfo =  getDiameterHelper(node.left);
+        NodeInfo rightNodeInfo = getDiameterHelper(node.right);
         
-        int maxDiameter = Math.max(leftNodeCounts.diameter, rightNodeCounts.diameter);
-        int currentDiameter =  leftNodeCounts.height + rightNodeCounts.height;
-        int longestHeight = 1  + Math.max(leftNodeCounts.height, rightNodeCounts.height);
+        int maxDiameter = Math.max(leftNodeInfo.diameter, rightNodeInfo.diameter);
+        int currentDiameter =  leftNodeInfo.height + rightNodeInfo.height;
+        int longestHeight = 1  + Math.max(leftNodeInfo.height, rightNodeInfo.height);
       
         return new NodeInfo(longestHeight, Math.max(maxDiameter, currentDiameter));
     }
