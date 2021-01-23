@@ -11,7 +11,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * We are using trie here. So for trie construction it will take ns time and ns
+ * space. Again for visited marking we are using nm space where nm is matrix size
+ * so total space complexity is O(ns + nm)
+ * Now for searching we are traversing the whole board which is nm and for each
+ * position we are checking 8 neighbors which will we repeat s time where s is
+ * the highest length of a word so total Time complexity is O (nm8^s + ns) here ns
+ * is for finding n word in trie
  * @author souravpalit
  */
 public class BoggleBoard {
@@ -99,9 +105,9 @@ public class BoggleBoard {
       
         List<Integer[]> adjacents = new ArrayList<Integer[]>();
         
-         // Top Left
-        if (i > 0 && j > 0) {
-            adjacents.add(new Integer [] {i - 1, j - 1});
+        // Top
+        if (i > 0) {
+            adjacents.add(new Integer [] {i - 1, j});
         }
         
         // Top Right
@@ -109,19 +115,14 @@ public class BoggleBoard {
             adjacents.add(new Integer [] {i -1, j + 1});
         }
         
+        // Right
+        if (j < colSize - 1) {
+            adjacents.add(new Integer [] {i, j + 1});
+        }
+        
         // Bottom Right
         if (i < rowSize - 1 && j < colSize -1) {
             adjacents.add(new Integer [] {i + 1, j + 1});
-        }
-        
-        // Bottom Left
-        if (i < rowSize - 1 && j > 0) {
-            adjacents.add(new Integer [] {i + 1, j - 1});
-        }
-        
-        // Top
-        if (i > 0) {
-            adjacents.add(new Integer [] {i - 1, j});
         }
         
         // Bottom
@@ -129,15 +130,19 @@ public class BoggleBoard {
             adjacents.add(new Integer [] {i + 1, j});
         }
         
+        // Bottom Left
+        if (i < rowSize - 1 && j > 0) {
+            adjacents.add(new Integer [] {i + 1, j - 1});
+        }
+        
         // Left
         if (j > 0) {
             adjacents.add(new Integer [] {i, j - 1});
         }
         
-        
-        // Right
-        if (j < colSize - 1) {
-            adjacents.add(new Integer [] {i, j + 1});
+        // Top Left
+        if (i > 0 && j > 0) {
+            adjacents.add(new Integer [] {i - 1, j - 1});
         }
         
         return adjacents;
