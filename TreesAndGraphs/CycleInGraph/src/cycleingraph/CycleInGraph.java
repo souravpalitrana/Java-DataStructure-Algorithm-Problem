@@ -6,7 +6,7 @@
 package cycleingraph;
 
 /**
- *
+ * Time Complexity O(v+e) and Space Complexity O(v)
  * @author souravpalit
  */
 public class CycleInGraph {
@@ -22,7 +22,7 @@ public class CycleInGraph {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        int edges [][] = {{1, 3}, {2, 3, 4}, {}, {}, {2,5}, {}};
+        int edges [][] = {{1, 3}, {2, 3, 4}, {0}, {}, {2,5}, {}};
         
         System.out.println("This graph has cycle: " + hasCycle(edges));
     }
