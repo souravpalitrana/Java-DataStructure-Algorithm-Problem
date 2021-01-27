@@ -11,7 +11,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * To storing all coordinates in respect to each coordinates takes O(n^2) time
+ * because in worst case all coordinates can be an straight line. 
+ * Again it takes O(n^2) spaces also.
+ * Now considering each point as bottom left point and rotating clockwise is 
+ * also takes O(n^2) time because for each point we need to deal with n-1 points
+ * So we can say time Complexity is O(n^2) and space complexity is O(n^2).
+ * We can ignore recursion call stack as it will be maximum 4 call frame because
+ * of 4 direction.
  * @author souravpalit
  */
 public class RectangleCount {
