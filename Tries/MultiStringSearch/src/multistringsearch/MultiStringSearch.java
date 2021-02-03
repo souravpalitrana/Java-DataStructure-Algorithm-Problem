@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Consider bigString length b and highest small string length s and number of
+ * small string is n. So we need to search n time and for each time we need to
+ * search for s characters and we need to search in b length of string. So
+ * time complexity is O(bns) as we are not using extra memory just O(n) for 
+ * returning the result.
  * @author souravpalit
  */
 public class MultiStringSearch {
