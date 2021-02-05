@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Time Complexity: O(n) Space Complexity: O(n)
  * @author souravpalit
  */
 public class FindNodesDistanceK {
@@ -81,9 +81,9 @@ public class FindNodesDistanceK {
         int leftDistance = findDistanceFromNodeToTarget(node.left, target, k, nodesInKDistance);
         int rightDistance = findDistanceFromNodeToTarget(node.right, target, k, nodesInKDistance);
         
-        if (leftDistance == k || rightDistance == k) nodesInKDistance.add(node.value);
-        
-        if (leftDistance != -1) {
+        if (leftDistance == k || rightDistance == k) {
+            nodesInKDistance.add(node.value);
+        } else if (leftDistance != -1) {
             findNodesInKDistance(node.right, leftDistance + 1, k, nodesInKDistance);
             return leftDistance + 1;
         } else if (rightDistance != -1) {
