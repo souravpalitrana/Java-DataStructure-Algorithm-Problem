@@ -7,7 +7,9 @@ package dfs;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -17,6 +19,9 @@ import java.util.Stack;
 public class DFS {
 
     /**
+     * Considering no cycle. If it has cycle then we need to track which node 
+     * we visited and need extra memory.
+     * Time Complexity O(v+e) Space Complexity O(v)
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -50,28 +55,34 @@ public class DFS {
         List<String> output = new ArrayList();
         
         //nodeA.depthFirstSearch(output);
-        
         depthFirstSearch(nodeA, output);
-        
+        //depthFirstSearchAlternate(nodeA, output);
         
         for (String name : output) {
             System.out.print(name + " ");
         }
     }
     
+    // Iterative approacch
     public static void depthFirstSearch(Node node, List<String> list) {
         Stack<Node> stack = new Stack<Node>();
         stack.add(node);
-        
         while (!stack.isEmpty()) {
             Node currentNode = stack.pop();
             if (currentNode != null) {
                 list.add(currentNode.name);
                 Collections.reverse(currentNode.children);
                 stack.addAll(currentNode.children);
-                /*for (int i = currentNode.children.size() -1; i >= 0; i--) {
-                    stack.add(currentNode.children.get(i));
-		}*/
+            }
+        }
+    }
+    
+    // Recursive approach
+    public static void depthFirstSearchAlternate(Node node, List<String> list) {
+        if (node != null) {
+            list.add(node.name);
+            for (Node child : node.children) {
+                depthFirstSearchAlternate(child, list);
             }
         }
     }
