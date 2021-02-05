@@ -21,7 +21,10 @@ public class DFS {
     /**
      * Considering no cycle. If it has cycle then we need to track which node 
      * we visited and need extra memory.
-     * Time Complexity O(v+e) Space Complexity O(v)
+     * Time Complexity O(v + e) Space Complexity O(v)
+     * One important thing is when we use DFS in binary tree then O (v + e) can 
+     * say O(v) because edge is less than v in case of Binary tree so v+e always
+     * less than 2v we can say it is O(v)s
      * @param args the command line arguments
      */
     public static void main(String[] args) {
