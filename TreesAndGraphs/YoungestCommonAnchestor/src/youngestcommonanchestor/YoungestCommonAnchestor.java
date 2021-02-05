@@ -6,7 +6,7 @@
 package youngestcommonanchestor;
 
 /**
- *
+ * Time Complexity O(d) and Space O(1)
  * @author souravpalit
  */
 public class YoungestCommonAnchestor {
@@ -33,7 +33,6 @@ public class YoungestCommonAnchestor {
                 getYoungestCommonAncestor(topAncestor, ancestorE, ancestorI);
         System.out.println("Youngest common ancestor is : " + 
                 youngestCommonAncestor.name);
-        
     }
     
     public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, 
@@ -73,5 +72,4 @@ public class YoungestCommonAnchestor {
         
         return descendant;
     }
-   
 }
