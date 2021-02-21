@@ -8,7 +8,7 @@ package iterativeinordertraversal;
 import java.util.function.Function;
 
 /**
- *
+ * Time Complexity: O(n) Space Complexity: O(1)
  * @author souravpalit
  */
 public class IterativeInOrderTraversal {
@@ -22,8 +22,6 @@ public class IterativeInOrderTraversal {
         binaryTree.left = new BinaryTree(2, binaryTree);
         binaryTree.left.left = new BinaryTree(4, binaryTree.left);
         binaryTree.left.left.right = new BinaryTree(9, binaryTree.left.left);
-        
-    
         
         binaryTree.right = new BinaryTree(3, binaryTree);
         binaryTree.right.left = new BinaryTree(6, binaryTree.right);

@@ -42,7 +42,6 @@ public class Program {
     } 
     
     public static void iterativeInOrderTraversal(BinaryTree tree) {
-    
         while (tree!= null) {
             if (!tree.isVisited && tree.left != null && !tree.left.isVisited) {
                 // Node is not printed and left not null and left not visited
