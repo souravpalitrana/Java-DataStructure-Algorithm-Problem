@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Time Complexity O(nlogn) Space Complexity O(n)
+ * Time Complexity O(n) Space Complexity O(n)
  * @author souravpalit
  */
 public class MinRewardsOptimizedFinal {
