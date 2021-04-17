@@ -10,7 +10,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- *
+ * Time complexity O(n + m) where n and m is the length of characters string 
+ * and document string respectively
+ * Space Complexity O(c) where c is the number of unique characters
  * @author souravpalit
  */
 public class GenerateDocument {
