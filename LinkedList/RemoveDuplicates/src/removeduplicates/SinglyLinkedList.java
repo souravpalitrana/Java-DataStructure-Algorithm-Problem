@@ -95,18 +95,16 @@ public class SinglyLinkedList<E> {
     public E get(int index) {
 
         SinglyNode<E> tempNode = head;
-        int counter = 1;
+        int counter = 0;
 
         if (index == 0) {
             return tempNode.getValue();
         } else {
             while (!tempNode.isLastNode()) {
                 counter++;
+                tempNode = tempNode.getNext();
                 if (counter == index) {
-                    tempNode = tempNode.getNext();
                     break;
-                } else {
-                    tempNode = tempNode.getNext();
                 }
             }
             return tempNode.getValue();
@@ -213,7 +211,7 @@ public class SinglyLinkedList<E> {
     /**
      * If you could not use extra memory like map to check where a value is present
      * then you need to use to loop like bubble sort. In that case time complexity
-     * will be O(n^2) but space complexity O(1)
+     * will be O(n^2) but space complexity O(1) (Considering data is not sorted)
      */
     public void removeDuplicatesNotUsingBuffer() {
         SinglyNode<E> current = head;
@@ -233,6 +231,26 @@ public class SinglyLinkedList<E> {
             }
             
             current = current.next;
+        }
+    }
+    
+    /**
+     * As value is sorted we know that duplicate values are situated one after 
+     * another. So we don't need to use extra memory here. Again no extra loop required
+     */
+    public void removeDuplicatesWhenValueSorted() {
+        SinglyNode<E> current = head;
+        
+        while (current != null) {
+            if (current.next != null && current.value == current.next.value) {
+                current.next = current.next.next;
+            } else {
+                if (current.next == null) {
+                    // Setting our current tail
+                    tail = current;
+                }
+                current = current.next;
+            }
         }
     }
     
