@@ -20,4 +20,17 @@ public class DoublyLinkedListNode {
         this.value = value;
         this.key = key;
     }
+    
+    public void removeBindings() {
+        if (prev != null) {
+            prev.next = next;
+        }
+        
+        if (next != null) {
+            next.prev = prev;
+        }
+        
+        prev = null;
+        next = null;
+    }
 }

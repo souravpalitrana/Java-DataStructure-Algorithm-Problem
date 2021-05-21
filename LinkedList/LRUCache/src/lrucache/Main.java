@@ -29,8 +29,8 @@ public class Main {
         lruCache.getValueFromKey("c");
         lruCache.getValueFromKey("d");
         lruCache.insertKeyValuePair("g", 5);
-        System.out.println(lruCache.getValueFromKey("e").value);
-        System.out.println(lruCache.getValueFromKey("a").value);
+        lruCache.insertKeyValuePair("a", 2);
+        System.out.println(lruCache.mostRecentList.head.value);
     }
     
 }

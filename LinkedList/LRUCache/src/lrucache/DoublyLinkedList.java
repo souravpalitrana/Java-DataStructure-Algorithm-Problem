@@ -33,6 +33,7 @@ public class DoublyLinkedList {
                 removeTail();
             }
             
+            node.removeBindings();
             head.prev = node;
             node.next = head;
             head = node;
