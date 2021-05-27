@@ -92,7 +92,7 @@ public class SinglyLinkedList<E> {
     public E get(int index) {
 
         SinglyNode<E> tempNode = head;
-        int counter = 1;
+        int counter = 0;
 
         if (index == 0) {
             return tempNode.getValue();
