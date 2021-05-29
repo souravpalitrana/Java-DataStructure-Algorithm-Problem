@@ -8,7 +8,7 @@ package sortstack;
 import java.util.ArrayList;
 
 /**
- *
+ * Time Complexity: O(n^2) Space Complexity: O(n)
  * @author souravpalit
  */
 public class SortStack {
