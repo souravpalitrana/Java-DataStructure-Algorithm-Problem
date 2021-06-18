@@ -70,42 +70,4 @@ public class MergeSortedArraysOptimized {
         
         return sortedArrays;
     }
-    
-    public static List<Integer> mergeSortedArraysAlternate1(List<List<Integer>> arrays) {
-        ArrayList<Integer> sortedArrays = new ArrayList<Integer>();
-        
-        int maxLength = findMaxLength(arrays);
-        
-        for (int i = 0; i < maxLength; i++) {
-            
-            
-            ArrayList<Integer> newHeapValues = new ArrayList<Integer>();
-            for (int j = 0; j < arrays.size(); j++) {
-                if (i < arrays.get(j).size()) {
-                    newHeapValues.add(arrays.get(j).get(i));
-                }
-            }
-            
-            if (newHeapValues.size() > 0) {
-                 MinHeap minHeap = new MinHeap(newHeapValues);
-                 while (minHeap.heap.size() > 0) {
-                    sortedArrays.add(minHeap.remove());
-                 }
-            }
-        }
-        
-        return sortedArrays;
-    }
-    
-    private static int findMaxLength(List<List<Integer>> arrays) {
-        int maxLength = 0;
-        
-        for (List<Integer> array : arrays) {
-            if (array.size() > maxLength) {
-                maxLength = array.size();
-            }
-        }
-        
-        return maxLength;
-    }
 }
