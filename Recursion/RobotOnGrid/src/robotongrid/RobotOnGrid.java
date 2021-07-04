@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -26,11 +26,18 @@ public class RobotOnGrid {
             {0,2,0,2}, 
             {2,0,0,0}};*/
         
-        int board [][] = {
+        /*int board [][] = {
             {0,0,0,0}, 
             {0,0,2,0}, 
             {2,0,0,2}, 
-            {0,2,0,0}};
+            {0,2,0,0}};*/
+        
+        int board [][] = {
+            {0,0,0,2}, 
+            {0,0,2,2}, 
+            {2,0,0,2}, 
+            {0,2,0,2}};
+        
         
         /*int board [][] = {
             {0,2,0,0}, 
@@ -47,7 +54,7 @@ public class RobotOnGrid {
    
     private static boolean hasPath(int board[][], int row, int col) {
         
-        if (col >= board[0].length || board[row][col] != 0) {
+        if (col >= board[0].length || row >= board.length || board[row][col] != 0) {
             return false;
         }
         
