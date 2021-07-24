@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Power Set: Write a method to return all subsets of a set. 
+ * Time Complexity: O(n*2^n) Space Complexity: O(n*2^n)
  * @author souravpalit
  */
 public class PowerSet {
@@ -50,7 +51,6 @@ public class PowerSet {
             allSubsets = getSubsets(set, index + 1);
             String item = set.get(index);
             ArrayList<ArrayList<String>> moreSubsets = new ArrayList<>();
-            
             for (ArrayList<String> subset : allSubsets) {
                 ArrayList<String> newSubset = new ArrayList<>();
                 newSubset.addAll(subset);
