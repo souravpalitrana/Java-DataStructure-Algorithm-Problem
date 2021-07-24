@@ -6,7 +6,7 @@
 package permutation;
 
 /**
- *
+ * Time Complexity: O(n^2* n!) Space Complexity: O(n*n!)
  * @author souravpalit
  */
 public class PermutationAlternate {

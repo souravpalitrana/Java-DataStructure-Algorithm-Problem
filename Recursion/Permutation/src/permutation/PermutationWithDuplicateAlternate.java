@@ -5,6 +5,8 @@
  */
 package permutation;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author souravpalit
@@ -36,6 +38,7 @@ public class PermutationWithDuplicateAlternate {
     }
     
     public static String swap(String input, int first, int second) {
+        ArrayList<Integer> inputs = new ArrayList<Integer>();
         char [] inputChars = input.toCharArray();
         char temp = inputChars[first];
         inputChars[first] = inputChars[second];

@@ -8,7 +8,7 @@ package permutation;
 import java.util.ArrayList;
 
 /**
- *
+ * Time Complexity: O(n^2* n!) Space Complexity: O(n*n!)
  * @author souravpalit
  */
 public class Permutation {
@@ -26,7 +26,6 @@ public class Permutation {
     }
     
     public static ArrayList<String> calculate(String input, int n) {
-        
         if (n == 1) {
             ArrayList<String> list = new ArrayList();
             list.add(String.valueOf(input.charAt(n-1)));
