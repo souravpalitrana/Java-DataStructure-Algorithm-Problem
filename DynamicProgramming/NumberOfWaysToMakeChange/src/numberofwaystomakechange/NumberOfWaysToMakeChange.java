@@ -6,7 +6,8 @@
 package numberofwaystomakechange;
 
 /**
- *
+ * Time Complexity: O(n^m) where n is the coin length and m is the amount / min(coins)
+ * Space Complexity:O(n) because of call stack
  * @author souravpalit
  */
 public class NumberOfWaysToMakeChange {
