@@ -7,7 +7,7 @@ package numberofwaystomakechange;
 
 /**
  * Time Complexity: O(n*m) where n is the coin length and m is the amount
- * Space Complexity:O(m) because of call stack
+ * Space Complexity:O(m) because of cache
  * @author souravpalit
  */
 public class NumberOfWaysToMakeChangeIterative {
@@ -16,7 +16,7 @@ public class NumberOfWaysToMakeChangeIterative {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int [] denoms = {1, 5};
+        int [] denoms = {2, 5};
         int amount = 6;
         
         System.out.println("Number of ways to make change : " + getNumberOfWaysToMakeChange(denoms, amount));
