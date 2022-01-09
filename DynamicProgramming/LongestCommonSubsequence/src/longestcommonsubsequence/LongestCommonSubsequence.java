@@ -17,7 +17,8 @@ public class LongestCommonSubsequence {
     public static void main(String[] args) {
         String str1 = "zxvvyzw";
         String str2 = "xkykzpw";
-        List<Character> lcs = longestCommonSubsequence(str1, str2);
+        //List<Character> lcs = longestCommonSubsequence(str1, str2);
+        List<Character> lcs = longestCommonSubsequenceAlternateImpl(str1, str2);
         for (char ch : lcs) {
             System.out.print(ch + "  ");
         }
@@ -57,4 +58,41 @@ public class LongestCommonSubsequence {
         return lcs.get(str1.length()).get(str2.length());
     }
     
+    public static List<Character> longestCommonSubsequenceAlternateImpl(String str1, String str2) {
+        Cell [][] cells = new Cell[str1.length() + 1][str2.length() + 1];
+        
+        for (int row = 0; row < cells.length; row++) {
+            for (int col = 0; col < cells[0].length; col++) {
+                cells[row][col] = new Cell();
+            }
+        }
+        
+        for (int row = 1; row < cells.length; row++) {
+            for (int col = 1; col < cells[0].length; col++) {
+                Cell currentCell = cells[row][col];
+                if (str1.charAt(row - 1) == str2.charAt(col - 1)) {
+                    Cell previousLcsCell = cells[row - 1][col - 1];
+                    currentCell.lcsChars.addAll(previousLcsCell.lcsChars);
+                    currentCell.lcsChars.add(str1.charAt(row - 1));
+                } else {
+                    Cell upperCell = cells[row - 1][col];
+                    Cell leftCell = cells[row][col - 1];
+                    
+                    if (upperCell.lcsChars.size() > leftCell.lcsChars.size()) {
+                        currentCell.lcsChars.addAll(upperCell.lcsChars);
+                    } else {
+                        currentCell.lcsChars.addAll(leftCell.lcsChars);
+                    }
+                }
+            }
+        }
+        
+        
+        return cells[str1.length()][str2.length()].lcsChars;
+    }
+    
+    
+    static class Cell {
+        List<Character> lcsChars = new ArrayList<Character>();
+    }
 }
