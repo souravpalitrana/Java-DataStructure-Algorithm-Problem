@@ -85,7 +85,7 @@ public class BST {
                     // target position
                     currentNode.right.remove(currentNode.value, currentNode);
                 } else if (parentNode == null) {
-                    // Parentnode may be null which means it is root node and as
+                    // Parentnode is null which means it is root node and as
                     // first condition failed that means it has only one child. 
                     // either left or right child.
                     if (currentNode.left != null) {
@@ -94,8 +94,8 @@ public class BST {
                         // node of the root node and right node (if available) will
                         // be the right node of the root node
                         currentNode.value = currentNode.left.value;
-                        currentNode.left = currentNode.left.left;
                         currentNode.right = currentNode.left.right;
+                        currentNode.left = currentNode.left.left;
                     } else if (currentNode.right != null) {
                         // Same like above. As it has only right child so we will
                         // set immediate right childe value as root valuee and
