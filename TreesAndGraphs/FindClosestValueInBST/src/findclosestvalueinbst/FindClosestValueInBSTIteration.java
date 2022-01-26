@@ -34,6 +34,9 @@ public class FindClosestValueInBSTIteration {
                  tree = tree.left;
              } else if (tree.value < target) {
                  tree = tree.right;
+             } else {
+                 // In case same value
+                 break;
              }
          }
          
