@@ -18,7 +18,7 @@ public class BSTOperation {
         ///nt [] values = {5, 15};
         //int [] values = {5, 9, 7 , 4, 3, 11, 12, 6};
         //int [] values = {5, 15, 2 , 5, 13, 22, 1, 14, 12};
-        int [] values = {5, 15, 2 , 5, 13, 22, 1, 14, 12};
+        /*int [] values = {5, 15, 2 , 5, 13, 22, 1, 14, 12};
         
         BST bst = new BST(10);
         
@@ -33,7 +33,11 @@ public class BSTOperation {
            System.out.println("Contains (" + values[i] + ") : " + bst.contains(values[i]));
         }
         
-        testValidBST();
+        testValidBST();*/
+        
+        BST bst = new BST(5);
+        bst.remove(10);
+        System.out.println("Contains : " + bst.contains(15));
     }
     
     public static void testValidBST() {
