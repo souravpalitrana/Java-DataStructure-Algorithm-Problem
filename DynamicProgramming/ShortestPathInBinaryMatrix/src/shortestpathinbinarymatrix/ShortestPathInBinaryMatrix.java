@@ -15,7 +15,26 @@ public class ShortestPathInBinaryMatrix {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        ShortestPathInBinaryMatrixSolution solution = new ShortestPathInBinaryMatrixSolution();
+        
+        /*int [][] grid = {
+            {0,0,1,1,1},
+            {1,0,0,0,1}, 
+            {1,0,1,1,1}, 
+            {1,0,0,0,0}, 
+            {1,1,1,1,0}
+        };*/
+        
+        int [][] grid = {
+            {0,0,0,0,1},
+            {1,0,0,0,0}, 
+            {0,1,0,1,0}, 
+            {0,0,0,1,1}, 
+            {0,0,0,1,0}
+        };
+        
+        System.out.println(solution.shortestPathBinaryMatrix(grid));
     }
     
 }
