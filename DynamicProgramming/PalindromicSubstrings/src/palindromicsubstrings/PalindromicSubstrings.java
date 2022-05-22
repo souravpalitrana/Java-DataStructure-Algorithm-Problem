@@ -11,11 +11,41 @@ package palindromicsubstrings;
  */
 public class PalindromicSubstrings {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    // Time complexity: O(n^2) where n is the length of the string and
+    // Space Complexity: O(n^2)
+    public int countSubstrings(String s) {
+        boolean[][] palindrome = new boolean[s.length()][s.length()];
+        //int length = s.length();
+        int palindromeCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if (i == j) {
+                    palindrome[i][j] = true;
+                    palindromeCount++;
+                }
+            }
+        }
+
+        for (int length = 2; length < s.length() + 1; length++) {
+            for (int i = 0; i < s.length() - length + 1; i++) {
+                int j = i + length - 1;
+                boolean isPalindrom = false;
+                
+                if (length == 2) {
+                    isPalindrom = (s.charAt(i) == s.charAt(j));
+                } else {
+                    isPalindrom = (s.charAt(i) == s.charAt(j) && palindrome[i + 1][j - 1]);
+                }
+                
+                palindrome[i][j] = isPalindrom;
+                
+                if (isPalindrom) {
+                    palindromeCount++;
+                }
+            }
+        }
+
+        return palindromeCount;
+
     }
-    
 }
