@@ -6,8 +6,6 @@
 
 package linkedlistimplementation;
 
-import java.util.LinkedList;
-import javafx.scene.Node;
 
 /**
  *
@@ -21,7 +19,7 @@ public class LinkedListImplementation {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       SinglyLinkedList<Integer> myLinkedList = new SinglyLinkedList<Integer>();  
+       /*SinglyLinkedList<Integer> myLinkedList = new SinglyLinkedList<Integer>();  
        myLinkedList.add(2);
        myLinkedList.add(4);
        myLinkedList.add(5);
@@ -75,7 +73,17 @@ public class LinkedListImplementation {
        
        myLinkedList.removeAt(myLinkedList.size() -1);
        System.out.println("After removing value from last");   
-       myLinkedList.printList();
+       myLinkedList.printList();*/
+       
+       LinkedList myLinkedList = new LinkedList();
+       myLinkedList.addAtHead(1);
+        myLinkedList.addAtTail(3);
+        myLinkedList.addAtIndex(1, 2);    // linked list becomes 1->2->3
+        myLinkedList.get(1);              // return 2
+        System.out.println(myLinkedList.get(1));;  
+        myLinkedList.deleteAtIndex(1);    // now the linked list is 1->3
+        myLinkedList.printList();
+        System.out.println(myLinkedList.get(1));;  
        
     }
     
