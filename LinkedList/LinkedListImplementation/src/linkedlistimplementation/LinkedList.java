@@ -25,7 +25,7 @@ public class LinkedList {
         
         SinglyNode<Integer> current = head.next;
         
-        while (index >= 0) {
+        while (index > 0) {
             current = current.next;
             index--;
         }
@@ -52,7 +52,7 @@ public class LinkedList {
         
         SinglyNode<Integer> current = head;
         
-        while (index >= 0) {
+        while (index > 0) {
             current = current.next;
             index--;
         }
@@ -88,7 +88,8 @@ public class LinkedList {
        if (size == 0) {
            System.out.println("Empty Linked List");
        } else {
-           SinglyNode<Integer> tempNode = head;
+            System.out.println("Printing Linked List : ");
+           SinglyNode<Integer> tempNode = head.next;
            
            while (tempNode != null) {
                System.out.println(tempNode.value);
