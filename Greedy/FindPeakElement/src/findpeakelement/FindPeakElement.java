@@ -27,4 +27,22 @@ public class FindPeakElement {
         }
         return 0;
     }
+    
+    // Time Complexity: O(logn) Space Complexity::O(1)
+    public int findPeakElementOptimize(int[] nums) {
+        int low = 0;
+        int high = nums.length - 1;
+        
+        while (low < high) {
+            int mid = (low + high) / 2;
+            
+            if (nums[mid] > nums[mid + 1]) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        
+        return low;
+    }
 }
