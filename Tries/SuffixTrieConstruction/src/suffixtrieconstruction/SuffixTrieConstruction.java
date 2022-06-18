@@ -19,14 +19,16 @@ public class SuffixTrieConstruction {
     public static void main(String[] args) {
         // TODO code application logic here
        
-        String [] words = {"this", "is", "a", "big", "string"};
+        //String [] words = {"this", "is", "a", "big", "string"};
+        String [] words = {"this"};
         SuffixTrie suffixTrie = new SuffixTrie();
         
         for (int i = 0 ; i < words.length; i++) {
             suffixTrie.add(words[i]);
         }
         
-        String [] testWords = {"this", "yo", "is", "a", "bigger", "string", "kappa"};
+        //String [] testWords = {"this", "yo", "is", "a", "bigger", "string", "kappa"};
+        String [] testWords = {"this", "is"};
         for (int i = 0; i < testWords.length; i++) {
             System.out.println("'" + testWords[i] + "'" + 
                     " Contains in SuffixTree: " + suffixTrie.contains(testWords[i]));
