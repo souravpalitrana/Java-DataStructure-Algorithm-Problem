@@ -17,23 +17,23 @@ public class MatchsticksToSquare {
     
     public static void main(String args[]) {
         int [] sticks = {5,5,5,5,4,4,4,4,3,3,3,3};
-        System.out.println(makesquare(sticks));
+        //System.out.println(makesquare(sticks));
     }
 
-    static int [] sides;
-    static int eachSideLength;
+    // TC: O(4^n) O(n)
+    int [] sides;
+    int eachSideLength;
     
-    public static boolean makesquare(int [] matchSticks) {
+    public boolean makesquare(int [] matchSticks) {
         sides = new int [4];
         int totalLength = 0;
-        eachSideLength = Integer.MIN_VALUE;
         List<Integer> sticks = new ArrayList<>();
         for (int stickLength : matchSticks) {
             totalLength += stickLength;
             sticks.add(stickLength);
         }
         
-        int eachSideLength = totalLength / 4;
+        eachSideLength = totalLength / 4;
         if (eachSideLength * 4 != totalLength) {
             return false;
         }
@@ -42,7 +42,7 @@ public class MatchsticksToSquare {
         return explore(sticks, 0);
     }
     
-    public static boolean explore(List<Integer> matchSticks, int stickIdx) {
+    public boolean explore(List<Integer> matchSticks, int stickIdx) {
         if (stickIdx == matchSticks.size()) {
             return sides[0] == sides[1] && sides[1] == sides[2] && sides[2] == sides[3];
         }
