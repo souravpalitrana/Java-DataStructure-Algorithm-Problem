@@ -46,7 +46,7 @@ public class WordBreakII {
                 break;
             }
             
-            currentNode = currentNode.children.get(i);
+            currentNode = currentNode.children.get(ch);
           
             
             if (currentNode.children.containsKey(trie.endSymbol)) {
