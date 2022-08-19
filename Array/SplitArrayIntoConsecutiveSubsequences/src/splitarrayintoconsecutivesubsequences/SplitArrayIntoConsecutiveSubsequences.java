@@ -5,6 +5,8 @@
  */
 package splitarrayintoconsecutivesubsequences;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
@@ -63,5 +65,42 @@ public class SplitArrayIntoConsecutiveSubsequences {
 
     private int getLength(int[] seq) {
         return seq[1] - seq[0] + 1;
+    }
+    
+    
+    // TC: O(n) SC: O(n)
+    public boolean isPossibleAlternate(int[] nums) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        Map<Integer, Integer> subsequences = new HashMap<>();
+        
+        for (int num : nums) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+        
+        for (int num : nums) {
+            if (frequencyMap.get(num) == 0) {
+                continue;
+            }
+            
+            if (subsequences.getOrDefault(num - 1, 0) > 0) {
+                // num - 1 presents so we can add to existing sequence
+                // After adding num num - 1 count will be reduced by 1 as we placed num in
+                // this sequence theoritically. Again num sequence will increased as another sequence with last number num added. 
+                subsequences.put(num - 1, subsequences.getOrDefault(num - 1, 0) - 1);
+                subsequences.put(num, subsequences.getOrDefault(num, 0) + 1);
+            } else if (frequencyMap.getOrDefault(num + 1, 0) > 0 && frequencyMap.getOrDefault(num + 2, 0) > 0) {
+                // We have more value which can create a valid sequence of at least 3 length starting vaue num. So update subsequence with the last value and reduce frequency
+                subsequences.put(num + 2, subsequences.getOrDefault(num + 2, 0) + 1);
+                frequencyMap.put(num + 1, frequencyMap.getOrDefault(num + 1, 0) - 1);
+                frequencyMap.put(num + 2, frequencyMap.getOrDefault(num + 2, 0) - 1);
+            } else {
+                // No valid subsequence is possible
+                return false;
+            }
+            
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) - 1);
+        }
+        
+        return true;
     }
 }
